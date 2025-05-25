@@ -1,0 +1,17 @@
+[0.454s] Invoking command in '/home/aoki/RSA/goal_remap_ws/src/goal_remap/build/goal_remap': PYTHONPATH=/home/aoki/RSA/goal_remap_ws/src/goal_remap/build/goal_remap/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/aoki/RSA/goal_remap_ws/src/goal_remap/install/goal_remap/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/aoki/RSA/goal_remap_ws/src/goal_remap/build/goal_remap/build --no-deps symlink_data
+[0.608s] running develop
+[0.702s] running egg_info
+[0.702s] writing goal_remap.egg-info/PKG-INFO
+[0.703s] writing dependency_links to goal_remap.egg-info/dependency_links.txt
+[0.703s] writing entry points to goal_remap.egg-info/entry_points.txt
+[0.703s] writing requirements to goal_remap.egg-info/requires.txt
+[0.703s] writing top-level names to goal_remap.egg-info/top_level.txt
+[0.704s] reading manifest file 'goal_remap.egg-info/SOURCES.txt'
+[0.704s] writing manifest file 'goal_remap.egg-info/SOURCES.txt'
+[0.728s] running build_ext
+[0.729s] Creating /home/aoki/RSA/goal_remap_ws/src/goal_remap/install/goal_remap/lib/python3.10/site-packages/goal-remap.egg-link (link to .)
+[0.729s] Installing goal_remapper script to /home/aoki/RSA/goal_remap_ws/src/goal_remap/install/goal_remap/lib/goal_remap
+[0.729s] 
+[0.729s] Installed /home/aoki/RSA/goal_remap_ws/src/goal_remap/build/goal_remap
+[0.729s] running symlink_data
+[0.750s] Invoked command in '/home/aoki/RSA/goal_remap_ws/src/goal_remap/build/goal_remap' returned '0': PYTHONPATH=/home/aoki/RSA/goal_remap_ws/src/goal_remap/build/goal_remap/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/aoki/RSA/goal_remap_ws/src/goal_remap/install/goal_remap/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/aoki/RSA/goal_remap_ws/src/goal_remap/build/goal_remap/build --no-deps symlink_data

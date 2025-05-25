@@ -1,0 +1,95 @@
+[0.503s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build', '--symlink-install', '--packages-select', 'goal_remap']
+[0.503s] DEBUG:colcon:Parsed command line arguments: Namespace(log_base=None, log_level=None, verb_name='build', build_base='build', install_base='install', merge_install=False, symlink_install=True, test_result_base=None, continue_on_error=False, executor='parallel', parallel_workers=32, event_handlers=None, ignore_user_meta=False, metas=['./colcon.meta'], base_paths=['.'], packages_ignore=None, packages_ignore_regex=None, paths=None, packages_up_to=None, packages_up_to_regex=None, packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_select_by_dep=None, packages_skip_by_dep=None, packages_skip_up_to=None, packages_select_build_failed=False, packages_skip_build_finished=False, packages_select_test_failures=False, packages_skip_test_passed=False, packages_select=['goal_remap'], packages_skip=None, packages_select_regex=None, packages_skip_regex=None, packages_start=None, packages_end=None, allow_overriding=[], cmake_args=None, cmake_target=None, cmake_target_skip_unavailable=False, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, ament_cmake_args=None, catkin_cmake_args=None, catkin_skip_building_tests=False, mixin_files=None, mixin=None, verb_parser=<colcon_mixin.mixin.mixin_argument.MixinArgumentDecorator object at 0x7fae9b437250>, verb_extension=<colcon_core.verb.build.BuildVerb object at 0x7fae9b436c50>, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0x7fae9b436c50>>, mixin_verb=('build',))
+[0.895s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[0.895s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[0.895s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[0.895s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[0.895s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[0.895s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[0.895s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/home/aoki/RSA/goal_remap_ws/src/goal_remap'
+[0.895s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[0.895s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[0.896s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[0.896s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[0.896s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[0.896s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[0.896s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[0.896s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[0.896s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[0.932s] DEBUG:colcon.colcon_core.package_identification:Package '.' with type 'ros.ament_python' and name 'goal_remap'
+[0.932s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[0.933s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[0.933s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[0.933s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[0.933s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[0.962s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) check parameters
+[0.962s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) discover
+[0.967s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 357 installed packages in /opt/ros/humble
+[0.969s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) using defaults
+[1.004s] Level 5:colcon.colcon_core.verb:set package 'goal_remap' build argument 'cmake_args' from command line to 'None'
+[1.004s] Level 5:colcon.colcon_core.verb:set package 'goal_remap' build argument 'cmake_target' from command line to 'None'
+[1.004s] Level 5:colcon.colcon_core.verb:set package 'goal_remap' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[1.004s] Level 5:colcon.colcon_core.verb:set package 'goal_remap' build argument 'cmake_clean_cache' from command line to 'False'
+[1.004s] Level 5:colcon.colcon_core.verb:set package 'goal_remap' build argument 'cmake_clean_first' from command line to 'False'
+[1.004s] Level 5:colcon.colcon_core.verb:set package 'goal_remap' build argument 'cmake_force_configure' from command line to 'False'
+[1.004s] Level 5:colcon.colcon_core.verb:set package 'goal_remap' build argument 'ament_cmake_args' from command line to 'None'
+[1.004s] Level 5:colcon.colcon_core.verb:set package 'goal_remap' build argument 'catkin_cmake_args' from command line to 'None'
+[1.004s] Level 5:colcon.colcon_core.verb:set package 'goal_remap' build argument 'catkin_skip_building_tests' from command line to 'False'
+[1.004s] DEBUG:colcon.colcon_core.verb:Building package 'goal_remap' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/aoki/RSA/goal_remap_ws/src/goal_remap/build/goal_remap', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/aoki/RSA/goal_remap_ws/src/goal_remap/install/goal_remap', 'merge_install': False, 'path': '/home/aoki/RSA/goal_remap_ws/src/goal_remap', 'symlink_install': True, 'test_result_base': None}
+[1.004s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[1.005s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[1.006s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/aoki/RSA/goal_remap_ws/src/goal_remap' with build type 'ament_python'
+[1.006s] Level 1:colcon.colcon_core.shell:create_environment_hook('goal_remap', 'ament_prefix_path')
+[1.012s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[1.012s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/aoki/RSA/goal_remap_ws/src/goal_remap/install/goal_remap/share/goal_remap/hook/ament_prefix_path.ps1'
+[1.014s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/aoki/RSA/goal_remap_ws/src/goal_remap/install/goal_remap/share/goal_remap/hook/ament_prefix_path.dsv'
+[1.015s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/aoki/RSA/goal_remap_ws/src/goal_remap/install/goal_remap/share/goal_remap/hook/ament_prefix_path.sh'
+[1.015s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[1.015s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[1.269s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/aoki/RSA/goal_remap_ws/src/goal_remap'
+[1.269s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[1.269s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[1.818s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/aoki/RSA/goal_remap_ws/src/goal_remap/build/goal_remap': PYTHONPATH=/home/aoki/RSA/goal_remap_ws/src/goal_remap/build/goal_remap/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/aoki/RSA/goal_remap_ws/src/goal_remap/install/goal_remap/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/aoki/RSA/goal_remap_ws/src/goal_remap/build/goal_remap/build --no-deps symlink_data
+[2.324s] Level 1:colcon.colcon_core.shell:create_environment_hook('goal_remap', 'pythonpath_develop')
+[2.324s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/aoki/RSA/goal_remap_ws/src/goal_remap/build/goal_remap/share/goal_remap/hook/pythonpath_develop.ps1'
+[2.325s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/aoki/RSA/goal_remap_ws/src/goal_remap/build/goal_remap' returned '0': PYTHONPATH=/home/aoki/RSA/goal_remap_ws/src/goal_remap/build/goal_remap/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/aoki/RSA/goal_remap_ws/src/goal_remap/install/goal_remap/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/aoki/RSA/goal_remap_ws/src/goal_remap/build/goal_remap/build --no-deps symlink_data
+[2.327s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/aoki/RSA/goal_remap_ws/src/goal_remap/build/goal_remap/share/goal_remap/hook/pythonpath_develop.dsv'
+[2.327s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/aoki/RSA/goal_remap_ws/src/goal_remap/build/goal_remap/share/goal_remap/hook/pythonpath_develop.sh'
+[2.335s] Level 1:colcon.colcon_core.environment:checking '/home/aoki/RSA/goal_remap_ws/src/goal_remap/install/goal_remap' for CMake module files
+[2.336s] Level 1:colcon.colcon_core.environment:checking '/home/aoki/RSA/goal_remap_ws/src/goal_remap/install/goal_remap' for CMake config files
+[2.337s] Level 1:colcon.colcon_core.environment:checking '/home/aoki/RSA/goal_remap_ws/src/goal_remap/install/goal_remap/lib'
+[2.338s] Level 1:colcon.colcon_core.environment:checking '/home/aoki/RSA/goal_remap_ws/src/goal_remap/install/goal_remap/bin'
+[2.338s] Level 1:colcon.colcon_core.environment:checking '/home/aoki/RSA/goal_remap_ws/src/goal_remap/install/goal_remap/lib/pkgconfig/goal_remap.pc'
+[2.338s] Level 1:colcon.colcon_core.environment:checking '/home/aoki/RSA/goal_remap_ws/src/goal_remap/install/goal_remap/lib/python3.10/site-packages'
+[2.338s] Level 1:colcon.colcon_core.shell:create_environment_hook('goal_remap', 'pythonpath')
+[2.338s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/aoki/RSA/goal_remap_ws/src/goal_remap/install/goal_remap/share/goal_remap/hook/pythonpath.ps1'
+[2.339s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/aoki/RSA/goal_remap_ws/src/goal_remap/install/goal_remap/share/goal_remap/hook/pythonpath.dsv'
+[2.339s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/aoki/RSA/goal_remap_ws/src/goal_remap/install/goal_remap/share/goal_remap/hook/pythonpath.sh'
+[2.340s] Level 1:colcon.colcon_core.environment:checking '/home/aoki/RSA/goal_remap_ws/src/goal_remap/install/goal_remap/bin'
+[2.340s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(goal_remap)
+[2.341s] INFO:colcon.colcon_core.shell:Creating package script '/home/aoki/RSA/goal_remap_ws/src/goal_remap/install/goal_remap/share/goal_remap/package.ps1'
+[2.342s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/aoki/RSA/goal_remap_ws/src/goal_remap/install/goal_remap/share/goal_remap/package.dsv'
+[2.343s] INFO:colcon.colcon_core.shell:Creating package script '/home/aoki/RSA/goal_remap_ws/src/goal_remap/install/goal_remap/share/goal_remap/package.sh'
+[2.343s] INFO:colcon.colcon_core.shell:Creating package script '/home/aoki/RSA/goal_remap_ws/src/goal_remap/install/goal_remap/share/goal_remap/package.bash'
+[2.344s] INFO:colcon.colcon_core.shell:Creating package script '/home/aoki/RSA/goal_remap_ws/src/goal_remap/install/goal_remap/share/goal_remap/package.zsh'
+[2.345s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/aoki/RSA/goal_remap_ws/src/goal_remap/install/goal_remap/share/colcon-core/packages/goal_remap)
+[2.346s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[2.346s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[2.346s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '0'
+[2.346s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[2.510s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.notify_send': Could not find 'notify-send'
+[2.511s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[2.511s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[2.511s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
+[2.518s] DEBUG:colcon.colcon_notification.desktop_notification.notify2:Failed to initialize notify2: org.freedesktop.DBus.Error.ServiceUnknown: The name org.freedesktop.Notifications was not provided by any .service files
+[2.519s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[2.519s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/aoki/RSA/goal_remap_ws/src/goal_remap/install/local_setup.ps1'
+[2.521s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/aoki/RSA/goal_remap_ws/src/goal_remap/install/_local_setup_util_ps1.py'
+[2.522s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/aoki/RSA/goal_remap_ws/src/goal_remap/install/setup.ps1'
+[2.524s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/aoki/RSA/goal_remap_ws/src/goal_remap/install/local_setup.sh'
+[2.524s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/aoki/RSA/goal_remap_ws/src/goal_remap/install/_local_setup_util_sh.py'
+[2.525s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/aoki/RSA/goal_remap_ws/src/goal_remap/install/setup.sh'
+[2.526s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/aoki/RSA/goal_remap_ws/src/goal_remap/install/local_setup.bash'
+[2.527s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/aoki/RSA/goal_remap_ws/src/goal_remap/install/setup.bash'
+[2.528s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/aoki/RSA/goal_remap_ws/src/goal_remap/install/local_setup.zsh'
+[2.529s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/aoki/RSA/goal_remap_ws/src/goal_remap/install/setup.zsh'
