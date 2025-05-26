@@ -1,3 +1,52 @@
 *.mp4
 *.mov
 *.mkv
+*.pcd
+
+# ROS 2 colcon build artifacts
+build/
+install/
+log/
+
+# Python cache and artifacts
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+
+# Editor/IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Launch debug or temp files
+*.launch.py~
+*.yaml~
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Virtual environments
+venv/
+.env/
+.venv/
+
+# ROS 2 parameter/launch backups
+*~ 
+*.bak
+
+# JetBrains and PyCharm files
+*.iml
+*.ipr
+*.iws
+out/
+
+# ROS 2 test results
+test_results/
+
+# ROS local logs
+ros_logs/

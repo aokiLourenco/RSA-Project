@@ -1,0 +1,42 @@
+{
+    "management": {
+        "actionID": {
+            "originatingStationID": 1798587532,
+            "sequenceNumber": 0
+        },
+        "detectionTime": 1626453837.658,
+        "referenceTime": 1626453837.658,
+        "eventPosition": {
+            "latitude": 40.633948233901784,
+            "longitude": -8.6596163113816,
+            "positionConfidenceEllipse": {
+                "semiMajorConfidence": 0,
+                "semiMinorConfidence": 0,
+                "semiMajorOrientation": 0
+            },
+            "altitude": {
+                "altitudeValue": 0,
+                "altitudeConfidence": 1
+            }
+        },
+        "validityDuration": 0,
+        "stationType": 0
+    },
+    
+    "situation": {
+        "informationQuality": 7,
+        "eventType": {
+            "causeCode": 13
+        }
+    },
+    "location": {
+      "detectionZonesToEventPosition":{
+        "traces": []
+      },
+      "eventPositionHeading":{
+        "value": 325,
+        "confidence":0 
+      }
+
+   }
+}

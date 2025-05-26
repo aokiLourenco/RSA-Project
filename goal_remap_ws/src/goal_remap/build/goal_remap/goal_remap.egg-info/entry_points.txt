@@ -1,3 +1,0 @@
-[console_scripts]
-goal_remapper = goal_remap.goal_remapper:main
-
