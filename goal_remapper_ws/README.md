@@ -132,12 +132,12 @@ ros2 launch goal_remapper goal_remapper_launch.py mqtt
 
 ## For MQTT side
 
-Localy on another terminal with mosquitto service running:
+Localy on another terminal with mosquitto service running (check with `htop --filter=mosquitto` if not run with `systemctl start mosquitto`):
 ```
 mosquitto_pub -h localhost -p 1883 -t "autoware/goal_remap" -f DENMexample.json
 ```
 
-For connection between machines make sure mosquitto is not running and run:
+For connection between machines make sure mosquitto is not running (check with `htop --filter=mosquitto` if running kill the process PID with `kill <PID>`) and run:
 ```
 cd goal_remapper_ws
 mosquitto -c mosquitto.conf
