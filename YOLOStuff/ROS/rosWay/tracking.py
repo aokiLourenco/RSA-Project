@@ -37,8 +37,8 @@ PIXEL_TO_METERS = 0.01   # scale factor to convert pixel error to movement
 
 denmMessage = {
     "management": {
-        "actionID": {
-            "originatingStationID": 1798587532,
+        "actionId": {
+            "originatingStationId": 1,
             "sequenceNumber": 0
         },
         "detectionTime": 1626453837.658,
@@ -63,7 +63,9 @@ denmMessage = {
     "situation": {
         "informationQuality": 7,
         "eventType": {
-            "causeCode": 13
+            "ccAndScc": {   
+                "reserved13": 13
+            }
         }
     },
     "location": {
@@ -86,165 +88,6 @@ logger = logging.getLogger(__name__)
 yawRateToTurn = 0
 distanceToPoint = 10000000
 
-# class yoloTracking(Node):
-#     def __init__(self, model_path="/sensors/yolo_model/best.pt", video_path="/sensors/yolo_model/Fullv2.mp4"):
-#         self.model = YOLO(model_path)
-#         self.cap = cv2.VideoCapture(video_path)
-
-#         self.yaw_rate_buffer = []
-
-#     def process_frame(self, frame):
-#         # frame = cv2.resize(frame, (CAMERA_WIDTH, CAMERA_HEIGHT))
-#         results = self.model(frame, conf=0.6, verbose=False)
-#         boxes = results[0].boxes.xyxy.cpu().numpy()
-#         classes = results[0].boxes.cls.cpu().numpy()
-#         labels = [self.model.names[int(c)] for c in classes]
-
-#         h, w = frame.shape[:2]
-#         cx, cy = w // 2, h // 2
-
-#         angles, centers = [], []
-
-#         for idx, box in enumerate(boxes):
-#             if labels[idx] == "Occupied":
-#                 continue
-#             x1, y1, x2, y2 = box
-#             bx, by = (x1 + x2) // 2, (y1 + y2) // 2
-#             dx, dy = bx - cx, by - cy
-#             angle = 0 if dx == 0 else (90 - np.abs(np.degrees(np.arctan(dy / dx))))
-#             if dx < 0: angle = -angle
-#             angles.append(angle)
-#             centers.append((bx, by))
-
-#         return angles, centers, frame
-
-#     def run(self):
-#         global yawRateToTurn, distanceToPoint
-#         while True:
-#             ret, frame = self.cap.read()
-#             if not ret:
-#                 continue
-
-#             gpu_frame = cv2.cuda_GpuMat()
-#             gpu_frame.upload(frame)
-
-#             # Resize on GPU (faster than CPU)
-#             gpu_resized = cv2.cuda.resize(gpu_frame, (640, 480))
-
-#             # Download back to CPU for display
-#             frame = gpu_resized.download()
-
-                
-#             angles, centers, frame = self.process_frame(frame)
-
-#             if angles:
-#                 best_idx = min(range(len(angles)), key=lambda i: (abs(angles[i]), -angles[i]))
-#                 best_angle = angles[best_idx]
-#                 best_center = centers[best_idx]
-
-#                 self.yaw_rate_buffer.append(best_angle)
-#                 if len(self.yaw_rate_buffer) > 10:
-#                     self.yaw_rate_buffer.pop(0)
-
-#                 yawRateToTurn = sum(self.yaw_rate_buffer) / len(self.yaw_rate_buffer)
-#                 distanceToPoint = math.hypot(best_center[0] - CAMERA_WIDTH // 2, best_center[1] - CAMERA_HEIGHT // 2)
-#             else:
-#                 yawRateToTurn = 0
-#                 distanceToPoint = float('inf')
-
-#             cv2.imshow("YOLO Tracking", frame)
-#             if cv2.waitKey(1) & 0xFF == ord('q'):
-#                 break
-    # def __init__(self):
-    #     self.model = YOLO("/sensors/yolo_model/best.pt")
-    #     # self.cap = cv2.VideoCapture(0)
-    #     self.cap = cv2.VideoCapture("/sensors/yolo_model/Fullv2.mp4")
-    #     self.yawRateBuffer = []
-    # def run(self): 
-    #     global yawRateToTurn
-    #     global distanceToPoint
-    #     while True:
-    #         ret, frame = self.cap.read()
-    #         if not ret:
-    #             #self.cap = cv2.VideoCapture("/sensors/yolo_model/Fullv2.mp4")
-    #             continue
-    #         # frame = cv2.imread("/sensors/yolo_model/yolo.PNG")
-    #         frame = cv2.resize(frame, (640, 480), interpolation=cv2.INTER_LINEAR)
-            
-
-    #         # Run YOLOv8 on the frame
-    #         results = self.model(frame, conf=0.6, verbose=False)
-    #         names = results[0].boxes.cls.cpu().numpy()  # Get class names
-    #         names = [self.model.names[int(name)] for name in names]  # Convert class indices to names
-    #         annotations = results[0].boxes.xyxy.cpu().numpy()  # Get bounding box coordinates
-    #         #print(names)
-    #         # Convert to a list of dictionaries
-    #         # annotations_list = []
-    #         # for box in annotations:
-    #         #     x1, y1, x2, y2 = box
-    #         #     annotations_list.append({
-    #         #         "x1": int(x1),
-    #         #         "y1": int(y1),
-    #         #         "x2": int(x2),
-    #         #         "y2": int(y2)
-    #         #     })
-    #         # Draw a line from the center of the image to the center of each bounding box
-    #         h, w, _ = frame.shape
-    #         #h,w = 480, 640
-    #         center_x, center_y = w // 2, h // 2
-    #         nameIndex = 0
-    #         angles = []
-    #         boxes = []
-            
-    #         for box in annotations:
-    #             x1, y1, x2, y2 = box
-    #             # x1 = box["x1"]
-    #             # y1 = box["y1"]
-    #             # x2 = box["x2"]
-    #             # y2 = box["y2"]
-                
-    #             name = names[nameIndex]
-    #             if(name == "Occupied"):
-    #                 nameIndex += 1
-    #                 continue
-    #             box_center_x = (x1 + x2) // 2
-    #             box_center_y = (y1 + y2) // 2
-    #             # print(f"Box center: ({box_center_x}, {box_center_y})")
-    #             # print(f"Image center: ({center_x}, {center_y})")
-    #             # Draw a line from the center of the image to the center of the bounding box
-                
-    #             # Calculate the angle
-    #             deltaX = box_center_x - center_x
-    #             deltaY = box_center_y - center_y
-    #             if(deltaX == 0):
-    #                 angles.append(0)
-    #                 boxes.append((box_center_x, box_center_y))
-    #                 break
-    #             deltaTan = deltaY / deltaX
-    #             angle = 90 - np.abs(math.degrees(math.atan(deltaTan)))
-    #             if(deltaX < 0):
-    #                 angle = -angle
-    #             angles.append(angle)
-    #             boxes.append((box_center_x, box_center_y))
-    #             nameIndex += 1
-    #         closest_to_zero = lambda lst: min(lst, key=lambda x: (abs(x), -x))
-    #         # Labda function to find the index of the closest value to zero in a set
-    #         closest_to_zero_index = lambda lst: min(range(len(lst)), key=lambda i: (abs(lst[i]), -lst[i]))
-    #         if(len(angles) > 0):
-    #             self.yawRateBuffer.append(closest_to_zero(angles))
-    #             if len(self.yawRateBuffer) > 10:
-    #                 self.yawRateBuffer.pop(0)
-    #             yawRateToTurn = sum(self.yawRateBuffer) / len(self.yawRateBuffer)
-    #             print(boxes[closest_to_zero_index(angles)])
-    #             distanceToPoint =  math.sqrt((boxes[closest_to_zero_index(angles)][0] - center_x) ** 2 + (boxes[closest_to_zero_index(angles)][1] - center_y) ** 2)
-    #         else:
-    #             yawRateToTurn = 0
-    #             distanceToPoint = 10000000
-    #         cv2.imshow("YOLO Tracking", frame)
-    #         if cv2.waitKey(1) & 0xFF == ord('q'):
-    #             break
-            
-           
 
 class StatusSubscriber(Node):    
     def __init__(self):
@@ -281,38 +124,7 @@ class TelemSubscriber(Node):
         global currentTelem
                          
         currentTelem = msg.data
-        
-# class MQTTClient:
-#     def __init__(self, broker="127.0.0.1", port=1883, topic="sensors/yolo_tracking"):
-#         self.broker = broker
-#         self.port = port
-#         self.topic = topic
-#         self.data = None
-#         self.client = self.connect_mqtt()
-#         self.subscribe()
-#         self.client.loop()
 
-#     def connect_mqtt(self) -> mqtt_client:
-#         def on_connect(client, userdata, flags, rc):
-#             if rc == 0:
-#                 logger.info("Connected to MQTT Broker!")
-#             else:
-#                 logger.error("Failed to connect, return code %d\n", rc)
-
-#         client = mqtt_client.Client()
-#         # client.username_pw_set(username, password)
-#         client.on_connect = on_connect
-#         client.connect(self.broker, self.port)
-#         return client
-
-
-#     def subscribe(self) -> None:
-#         def on_message(client, userdata, message):
-#             print(f"Received message '{message.payload.decode()}' on topic '{message.topic}'")
-#             self.data = message.payload.decode()
-
-#         self.client.subscribe(self.topic)
-#         self.client.on_message = on_message
 
 class MQTTClientHandler:
     def __init__(self, broker_ip, broker_port, topic, client_id=None, on_message_callback=None):
@@ -362,10 +174,11 @@ class MQTTClientHandler:
         self._client.publish(topic, json.dumps(payload))
 
 denmMqtt = MQTTClientHandler(
-    broker_ip="192.168.122.166",
+    broker_ip="192.168.159.29",
     broker_port=1883,
-    topic="vanetza/in/denm",
-    client_id="drone01_client",
+    # topic="vanetza/in/denm",
+    topic="autoware/goal_remap",
+    client_id="drone01",
     on_message_callback=lambda data: print(f"Received data: {data}")
 )
 denmMqtt.connect()
@@ -515,9 +328,6 @@ def waitForTask(cmd=None,state=None,droneId=None):
     while True:        
         lock.acquire()   
         rclpy.spin_once(status_subscriber, timeout_sec=0.1)
-        # print("cmd :",cmd)
-
-        # print(currentStatus)
         try:
             tmp = json.loads(currentStatus)
         except:
@@ -558,25 +368,18 @@ def main(args=None):
     
     # TODO create a thread to run the YOLO detection on loop
     
-    # yolotrack = yoloTracking()
-    
-    # yolothr = threading.Thread(target=yolotrack.run)
-    # yolothr.start()
-    
     
     
     rclpy.init(args=args)
 
     # Create a ROS node
     node = rclpy.create_node('publisher' + myDroneId)
-    
+    print("\033[2J\033[H\r")
     print("Drone ID: " + myDroneId)
     # Create a publisher for commands, a status subscriber and a telemetry subscriber
     publisher = node.create_publisher(String, '/cmd', 10)
     status_subscriber = StatusSubscriber()
     telem_subscriber = TelemSubscriber()
-    
-    tries = 0
     
     cancel_cmd()
     
@@ -591,7 +394,6 @@ def main(args=None):
         telem = {}
         while telem == {}:
             try:
-                print(currentTelem)
                 telem = json.loads(currentTelem)
             except:
                 telem = {}
@@ -604,64 +406,50 @@ def main(args=None):
                 arm(myDroneId)
                 print("Waiting for drone to be armed")
                 waitForTask('arm','success', myDroneId)
-                print("Arming drone")
             print(" TELEM : ", telem["position"])
             while(telem['position']["height"] == None):
                 time.sleep(0.1)
             if telem['height'] == 0 or int(telem["position"]["height"]) == 0:
+                print("Taking off drone")
                 takeoff_cmd(myDroneId)
                 waitForTask('takeoff','finish', myDroneId)
             break
-        
-    # thr = threading.Thread(target=client.client.loop_forever)
-    # thr.start()
-    # 40.633950, -8.659607
-    goto_cmd(40.633950,-8.659607,yaw=140,speed=2.5, droneId=myDroneId)
+    print("Moving to Parking Lot")    
+    #First task
+    
+    goto_cmd(40.63397,-8.659615, droneId=myDroneId)
     waitForTask('goto', 'finish', myDroneId)
-    turn(39.0, myDroneId)  # Turn to face the object
-    waitForTask('turn', 'finish', myDroneId)
-    move(0, 4, 0, myDroneId, speed=0.1)  # Move forward
-    denmMessage["management"]["eventPosition"]["latitude"] = telem["position"]["lat"]
-    denmMessage["management"]["eventPosition"]["longitude"] = telem["position"]["lon"]
-
-    denmMqtt.publish(denmMqtt.topic, denmMessage)
-    return
     
-    # First task
-    
-    # goto_cmd(40.63397,-8.659615, droneId=myDroneId)
-    # waitForTask('goto', 'finish', myDroneId)
-    
-    # while True:
+    while True:
 
         
-    #     while True:
-    #         time.sleep(0.1)
-    #         print("\r Current YAW: {} ; Distance: {}".format(yawRateToTurn, distanceToPoint))
-    #         if distanceToPoint > 50:
-    #             # If the distance is greater than 10 pixels, we need to turn
-    #             turn(yawRateToTurn, myDroneId)
-    #             waitForTask('turn', 'finish', myDroneId)
-    #             print("\r", yawRateToTurn, distanceToPoint)
-    #             move(0,100,0, myDroneId,speed=0.01)
-    #             while(np.abs(0-yawRateToTurn) < 10 and distanceToPoint > 50):
-    #                 # print(currentStatus)
-    #                 time.sleep(1)
-    #                 print("\r", yawRateToTurn, distanceToPoint)
-    #                 continue
-    #             print("PASSED ", yawRateToTurn, distanceToPoint)
-    #             cancel_cmd()
-    #             waitForTask("cancel", "success", myDroneId)
-    #             if distanceToPoint < 50:
-    #                 cancel_cmd(myDroneId)
-    #                 break
-    #     # TODO MQTT STUFF
-    #     print(telem)
-    #     denmMessage["management"]["eventPosition"]["latitude"] = telem["position"]["lat"]
-    #     denmMessage["management"]["eventPosition"]["longitude"] = telem["position"]["lon"]
+        while True:
+            time.sleep(0.1)
+            print("\r Current YAW: {} ; Distance: {}".format(yawRateToTurn, distanceToPoint))
+            if distanceToPoint > 50:
+                # If the distance is greater than 10 pixels, we need to turn
+                turn(yawRateToTurn, myDroneId)
+                waitForTask('turn', 'finish', myDroneId)
+                print("\r", yawRateToTurn, distanceToPoint)
+                move(0,100,0, myDroneId,speed=0.01)
+                while(np.abs(0-yawRateToTurn) < 10 and distanceToPoint > 50):
+                    # print(currentStatus)
+                    time.sleep(1)
+                    print("\r", yawRateToTurn, distanceToPoint)
+                    continue
+                print("PASSED ", yawRateToTurn, distanceToPoint)
+                cancel_cmd()
+                waitForTask("cancel", "success", myDroneId)
+                if distanceToPoint < 50:
+                    cancel_cmd(myDroneId)
+                    break
+        # TODO MQTT STUFF
+        print(telem)
+        denmMessage["management"]["eventPosition"]["latitude"] = telem["position"]["lat"]
+        denmMessage["management"]["eventPosition"]["longitude"] = telem["position"]["lon"]
 
-    #     denmMqtt.publish(denmMqtt.topic, denmMessage)
-    #     return
+        denmMqtt.publish(denmMqtt.topic, denmMessage)
+        return
                 
                 
 if __name__ == '__main__':
